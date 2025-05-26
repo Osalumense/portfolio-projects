@@ -19,7 +19,7 @@ const projects = [
       "Multi-vendor e-commerce platform. Built admin dashboard, user landing, and core modules like product, vendor, category management.",
     tech: ["React", "Flask", "Docker"],
     status: "live",
-    image: "https://github.com/user-attachments/assets/57c3903c-761a-4396-aeab-cc16111cd937",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447550199-57c3903c-761a-4396-aeab-cc16111cd937.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T133032Z&X-Amz-Expires=300&X-Amz-Signature=ee0bd4eec5c1ab905d2e5824320dd708d08d261e26d7ff23110765a52b671949&X-Amz-SignedHeaders=host",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const projects = [
     description: "Agro-commerce platform. Designed dashboard, core logic, and integrated Flutterwave payments.",
     tech: ["Laravel", "Tailwind", "PHP"],
     status: "live",
-    image: "https://github.com/user-attachments/assets/fa882a40-b875-4bb3-a926-de26cd0f6665",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447581506-fa882a40-b875-4bb3-a926-de26cd0f6665.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T133020Z&X-Amz-Expires=300&X-Amz-Signature=2ccc02c134aef835d1469dea1ab8871bceeab8b880e8c97ad555d95fca291287&X-Amz-SignedHeaders=host",
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const projects = [
       "Social platform for NGOs. Revamped homepage, redesigned admin dashboard, and integrated Stripe for donations.",
     tech: ["React", "Laravel"],
     status: "live",
-    image: "https://github.com/user-attachments/assets/8bfa55c9-6287-48fd-81e9-6d44c3be28c4",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447547186-8bfa55c9-6287-48fd-81e9-6d44c3be28c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T133007Z&X-Amz-Expires=300&X-Amz-Signature=3c5c8df05dacdfd1fd5fce7dc0f33360417a8ad9e47e105393f065e0068c6762&X-Amz-SignedHeaders=host",
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ const projects = [
       "Smart advisory platform for farmers in Nigeria. Built full backend, user flows, and an intelligent recommendation engine.",
     tech: ["Node.js", "TypeScript", "Sequelize", "AWS"],
     status: "mobile",
-    image: "https://github.com/user-attachments/assets/039a1d01-be28-4ca7-85ad-da6708072252",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447546608-039a1d01-be28-4ca7-85ad-da6708072252.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132953Z&X-Amz-Expires=300&X-Amz-Signature=1be345885a9da7e06bc2d3f797bac695dcf1b7c80119249106b8e4634bbc32ce&X-Amz-SignedHeaders=host",
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ const projects = [
     description: "Betting platform. Redesigned homepage, implemented registration system, and integrated payments.",
     tech: ["PHP", "Bootstrap", "Redis", "Docker"],
     status: "live",
-    image: "https://github.com/user-attachments/assets/010408c4-f9a8-4de3-8f71-d570661eb0fc",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447549838-010408c4-f9a8-4de3-8f71-d570661eb0fc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132937Z&X-Amz-Expires=300&X-Amz-Signature=d6825397ab65874d1d8dd3d785668b45626ca623357a88c3ed9fbd92af1a23f5&X-Amz-SignedHeaders=host",
   },
   {
     id: 8,
@@ -99,7 +99,7 @@ const projects = [
       "Financial literacy app for kids. Built a complete course management backend, parental monitoring features, and enrollment logic.",
     tech: ["Laravel", "PostgreSQL", "Heroku"],
     status: "mobile",
-    image: "https://github.com/user-attachments/assets/9155e989-113f-441b-8219-841442854240",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447549214-9155e989-113f-441b-8219-841442854240.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132924Z&X-Amz-Expires=300&X-Amz-Signature=ebda8547ef6ab1014c17550a303b1c52b6b370c330776bf3a06450788baf1726&X-Amz-SignedHeaders=host",
   },
   {
     id: 9,
@@ -110,7 +110,7 @@ const projects = [
     description: "AI-powered job matching platform. Built a waitlist page and am working on the full MVP.",
     tech: ["Next.js", "NestJS", "PostgreSQL"],
     status: "live",
-    image: "https://github.com/user-attachments/assets/7eba9b41-95e5-4791-b347-291fd71e1118",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447548863-7eba9b41-95e5-4791-b347-291fd71e1118.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132911Z&X-Amz-Expires=300&X-Amz-Signature=b6d3330286bf03d7463d4fa805e8bd2a8ddb10bb7408dbcc6a49125abee391ac&X-Amz-SignedHeaders=host",
   },
   {
     id: 10,
@@ -121,7 +121,7 @@ const projects = [
     description: "Learning platform for Nigerian secondary school students. Built and deployed backend v1 & v2.",
     tech: ["Node.js", "MySQL", "Redis", "AWS"],
     status: "offline",
-    image: "https://github.com/user-attachments/assets/f7229b21-1594-415e-983e-dfdf8c698e89",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447546026-f7229b21-1594-415e-983e-dfdf8c698e89.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132859Z&X-Amz-Expires=300&X-Amz-Signature=9955c418f8e8540263ff144293fa5b20cdf636681eabd715608e51f4df34a383&X-Amz-SignedHeaders=host",
   },
   {
     id: 11,
@@ -133,7 +133,7 @@ const projects = [
       "Team productivity tool for scheduling across time zones. Developed all backend APIs with Google Calendar integration.",
     tech: ["Node.js", "MySQL", "AWS"],
     status: "offline",
-    image: "https://github.com/user-attachments/assets/f662d005-f67a-42b3-9028-5377648ebca7",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447544987-f662d005-f67a-42b3-9028-5377648ebca7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132839Z&X-Amz-Expires=300&X-Amz-Signature=38d74b5fe6b506722bd0426e46ff25c0bf1504c5d256454af235d7d0cbcd6923&X-Amz-SignedHeaders=host",
   },
   {
     id: 12,
@@ -145,7 +145,7 @@ const projects = [
       "Shipping logistics tool for delivering from US/China/UK to Nigeria. Architected and built entire backend.",
     tech: ["Node.js", "TypeScript", "PostgreSQL", "AWS"],
     status: "offline",
-    image: "https://github.com/user-attachments/assets/c15468a5-eb8e-49ef-a784-5963f615b92a",
+    image: "https://github-production-user-asset-6210df.s3.amazonaws.com/43953425/447548293-c15468a5-eb8e-49ef-a784-5963f615b92a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250526%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T132714Z&X-Amz-Expires=300&X-Amz-Signature=7408fb47a3cdf13b6c290292010b06c37111f206387040ff9bff4c5750013514&X-Amz-SignedHeaders=host",
   },
   {
     id: 13,
