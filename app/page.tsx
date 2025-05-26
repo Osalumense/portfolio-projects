@@ -99,7 +99,7 @@ const projects = [
       "Financial literacy app for kids. Built a complete course management backend, parental monitoring features, and enrollment logic.",
     tech: ["Laravel", "PostgreSQL", "Heroku"],
     status: "mobile",
-    image: "/images/earybean.png",
+    image: "/images/earlybean.png",
   },
   {
     id: 9,
