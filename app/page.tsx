@@ -62,10 +62,14 @@ const projects = [
     category: "AgriTech",
     role: "Backend Developer",
     description:
-      "Smart advisory platform for farmers in Nigeria. Built full backend, user flows, and an intelligent recommendation engine.",
+      "Smart advisory platform for farmers in Nigeria. Built full backend, user flows, and an intelligent recommendation engine. Now with 1,000+ downloads on Google Play Store and featured in BusinessDay.",
     tech: ["Node.js", "TypeScript", "Sequelize", "AWS"],
     status: "mobile",
     image: "/images/farmpropa.png",
+    links: [
+      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.farmpropa.saro&hl=en" },
+      { label: "BusinessDay Feature", url: "https://businessday.ng/agriculture/article/saro-agrosciences-unveils-farmpropa-to-support-farmers-with-agronomic-guidance/" },
+    ],
   },
   {
     id: 6,
@@ -127,7 +131,7 @@ const projects = [
     id: 11,
     title: "Zonely",
     url: "http://tryzonely.com",
-    category: "Productivity",
+    category: "Productivity / SaaS",
     role: "Backend Developer",
     description:
       "Team productivity tool for scheduling across time zones. Developed all backend APIs with Google Calendar integration.",
@@ -158,6 +162,18 @@ const projects = [
     status: "offline",
     image: "/placeholder.svg?height=300&width=400",
   },
+  {
+    id: 14,
+    title: "DensOps",
+    url: "https://densops.com",
+    category: "SaaS",
+    role: "Fullstack Developer",
+    description:
+      "AI-powered local business lead generation and B2B prospecting platform. Finds, enriches, and exports business lists in seconds — including social handles, contact info, and verified business data. Built the frontend in Next.js, APIs in NestJS, and the AI/enrichment service in Python.",
+    tech: ["Next.js", "NestJS", "Python"],
+    status: "live",
+    image: "/images/densops.png",
+  },
 ]
 
 const skills = [
@@ -173,6 +189,7 @@ const skills = [
   "MongoDB",
   "React",
   "Next.js",
+  "NestJS",
   "PHP",
   "Python",
   "Kubernetes",
@@ -190,6 +207,7 @@ const categories = [
   "Gaming",
   "Corporate",
   "Productivity",
+  "SaaS",
 ]
 
 export default function Portfolio() {
@@ -221,7 +239,7 @@ export default function Portfolio() {
     if (category === "All") {
       setFilteredProjects(projects)
     } else {
-      setFilteredProjects(projects.filter((project) => project.category === category))
+      setFilteredProjects(projects.filter((project) => project.category.includes(category)))
     }
   }
 
@@ -547,6 +565,26 @@ export default function Portfolio() {
                     ))}
                   </div>
                 </div>
+
+                {selectedProject.links && selectedProject.links.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-3">Links</h3>
+                    <div className="flex flex-wrap gap-3">
+                      {selectedProject.links.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-400/30 rounded-lg text-blue-300 text-sm transition-colors"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </>
           )}
