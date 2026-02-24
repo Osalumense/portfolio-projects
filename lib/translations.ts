@@ -11,8 +11,8 @@ export const translations: Record<"en" | "fr", Translations> = {
       title: "Stephen Akugbe",
       subtitle: "Backend Developer / Fullstack Engineer",
       description1:
-        "I build robust backend systems and high-performance APIs powering apps used by thousands, from e-commerce platforms to financial literacy tools, logistics, and agritech solutions.",
-      description2: "Specializing in Laravel, Node.js, TypeScript, AWS, PostgreSQL, and scalable architectures.",
+        "I architect and build end-to-end applications—from robust backend APIs to seamless frontend integrations—powering platforms used by thousands across e-commerce, fintech, logistics, agritech, and SaaS.",
+      description2: "Specializing in full-stack development with Laravel, Node.js, React, Next.js, TypeScript, AWS, and PostgreSQL.",
       learnMore: "Learn More About Me",
     },
     about: {
@@ -50,6 +50,24 @@ export const translations: Record<"en" | "fr", Translations> = {
       databases: "Databases",
       devops: "DevOps & Cloud",
     },
+    categories: {
+      all: "All",
+      ecommerce: "E-commerce",
+      agritech: "AgriTech",
+      logistics: "Logistics",
+      edtech: "EdTech",
+      social: "Social Platform",
+      ai: "AI Platform",
+      gaming: "Gaming",
+      corporate: "Corporate",
+      productivity: "Productivity",
+      saas: "SaaS",
+    },
+    roles: {
+      fullstack: "Fullstack Developer",
+      backend: "Backend Developer",
+      frontend: "Frontend Developer",
+    },
   },
   fr: {
     nav: {
@@ -61,8 +79,8 @@ export const translations: Record<"en" | "fr", Translations> = {
       title: "Stephen Akugbe",
       subtitle: "Développeur Backend / Ingénieur Fullstack",
       description1:
-        "Je construis des systèmes backend robustes et des API haute performance alimentant des applications utilisées par des milliers de personnes, des plateformes e-commerce aux outils de littératie financière, logistique et solutions agritech.",
-      description2: "Spécialisé en Laravel, Node.js, TypeScript, AWS, PostgreSQL et architectures évolutives.",
+        "Je conçois et construis des applications complètes—des API backend robustes aux intégrations frontend fluides—alimentant des plateformes utilisées par des milliers de personnes dans l'e-commerce, la fintech, la logistique, l'agritech et les SaaS.",
+      description2: "Spécialisé en développement full-stack avec Laravel, Node.js, React, Next.js, TypeScript, AWS et PostgreSQL.",
       learnMore: "En savoir plus sur moi",
     },
     about: {
@@ -99,6 +117,24 @@ export const translations: Record<"en" | "fr", Translations> = {
       frontend: "Frontend",
       databases: "Bases de données",
       devops: "DevOps & Cloud",
+    },
+    categories: {
+      all: "Tous",
+      ecommerce: "E-commerce",
+      agritech: "AgriTech",
+      logistics: "Logistique",
+      edtech: "EdTech",
+      social: "Plateforme sociale",
+      ai: "Plateforme IA",
+      gaming: "Jeux",
+      corporate: "Corporate",
+      productivity: "Productivité",
+      saas: "SaaS",
+    },
+    roles: {
+      fullstack: "Développeur Fullstack",
+      backend: "Développeur Backend",
+      frontend: "Développeur Frontend",
     },
   },
 }

@@ -9,6 +9,13 @@ export interface Project {
   status: "live" | "mobile" | "offline"
   image: string
   links?: { label: string; url: string }[]
+  translations?: {
+    fr: {
+      role: string
+      description: string
+      links?: { label: string; url: string }[]
+    }
+  }
 }
 
 export interface SkillCategory {
@@ -64,5 +71,23 @@ export interface Translations {
     frontend: string
     databases: string
     devops: string
+  }
+  categories: {
+    all: string
+    ecommerce: string
+    agritech: string
+    logistics: string
+    edtech: string
+    social: string
+    ai: string
+    gaming: string
+    corporate: string
+    productivity: string
+    saas: string
+  }
+  roles: {
+    fullstack: string
+    backend: string
+    frontend: string
   }
 }

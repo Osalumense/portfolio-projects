@@ -12,6 +12,13 @@ export const projects: Project[] = [
     tech: ["React", "Flask", "Docker"],
     status: "live",
     image: "/images/bestdeal.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme e-commerce multi-vendeurs. Construit le tableau de bord admin, la page d'accueil utilisateur et les modules principaux comme la gestion des produits, vendeurs et catégories.",
+      },
+    },
   },
   {
     id: 2,
@@ -23,6 +30,13 @@ export const projects: Project[] = [
     tech: ["Laravel", "Tailwind", "PHP"],
     status: "live",
     image: "/images/afjafarms.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme agro-commerce. Conçu le tableau de bord, la logique de base et intégré les paiements Flutterwave.",
+      },
+    },
   },
   {
     id: 3,
@@ -34,6 +48,12 @@ export const projects: Project[] = [
     tech: ["Laravel", "TypeScript"],
     status: "live",
     image: "/images/guo.png",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description: "Contribué à l'architecture principale du site Web de logistique de transport leader au Nigeria.",
+      },
+    },
   },
   {
     id: 4,
@@ -46,6 +66,13 @@ export const projects: Project[] = [
     tech: ["React", "Laravel"],
     status: "live",
     image: "/images/comdoity.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme sociale pour les ONG. Refonte de la page d'accueil, refonte du tableau de bord admin et intégration de Stripe pour les dons.",
+      },
+    },
   },
   {
     id: 5,
@@ -60,8 +87,25 @@ export const projects: Project[] = [
     image: "/images/farmpropa.png",
     links: [
       { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.farmpropa.saro&hl=en" },
-      { label: "BusinessDay Feature", url: "https://businessday.ng/agriculture/article/saro-agrosciences-unveils-farmpropa-to-support-farmers-with-agronomic-guidance/" },
+      {
+        label: "BusinessDay Feature",
+        url: "https://businessday.ng/agriculture/article/saro-agrosciences-unveils-farmpropa-to-support-farmers-with-agronomic-guidance/",
+      },
     ],
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description:
+          "Plateforme de conseil intelligente pour les agriculteurs au Nigeria. Construit tout le backend, les flux utilisateur et un moteur de recommandation intelligent. Plus de 1 000 téléchargements sur Google Play Store et présenté dans BusinessDay.",
+        links: [
+          { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.farmpropa.saro&hl=en" },
+          {
+            label: "Article BusinessDay",
+            url: "https://businessday.ng/agriculture/article/saro-agrosciences-unveils-farmpropa-to-support-farmers-with-agronomic-guidance/",
+          },
+        ],
+      },
+    },
   },
   {
     id: 6,
@@ -73,6 +117,12 @@ export const projects: Project[] = [
     tech: ["React", "Tailwind"],
     status: "live",
     image: "/placeholder.svg?height=300&width=400",
+    translations: {
+      fr: {
+        role: "Développeur Frontend",
+        description: "Construit une page d'accueil épurée adaptée aux directives de la marque.",
+      },
+    },
   },
   {
     id: 7,
@@ -84,6 +134,13 @@ export const projects: Project[] = [
     tech: ["PHP", "Bootstrap", "Redis", "Docker"],
     status: "live",
     image: "/images/sima.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme de paris. Refonte de la page d'accueil, mise en place du système d'inscription et intégration des paiements.",
+      },
+    },
   },
   {
     id: 8,
@@ -96,6 +153,13 @@ export const projects: Project[] = [
     tech: ["Laravel", "PostgreSQL", "Heroku"],
     status: "mobile",
     image: "/images/earlybean.png",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description:
+          "Application de littératie financière pour les enfants. Construit un backend complet de gestion de cours, des fonctionnalités de surveillance parentale et la logique d'inscription.",
+      },
+    },
   },
   {
     id: 9,
@@ -107,6 +171,13 @@ export const projects: Project[] = [
     tech: ["Next.js", "NestJS", "PostgreSQL"],
     status: "live",
     image: "/images/jobpadi.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme de correspondance d'emplois alimentée par l'IA. Construit une page de liste d'attente et travaille sur le MVP complet.",
+      },
+    },
   },
   {
     id: 10,
@@ -118,6 +189,13 @@ export const projects: Project[] = [
     tech: ["Node.js", "MySQL", "Redis", "AWS"],
     status: "offline",
     image: "/images/etuition.png",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description:
+          "Plateforme d'apprentissage pour les étudiants du secondaire nigérians. Construit et déployé le backend v1 & v2.",
+      },
+    },
   },
   {
     id: 11,
@@ -130,6 +208,13 @@ export const projects: Project[] = [
     tech: ["Node.js", "MySQL", "AWS"],
     status: "offline",
     image: "/images/zonely.png",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description:
+          "Outil de productivité d'équipe pour la planification à travers les fuseaux horaires. Développé toutes les API backend avec intégration Google Calendar.",
+      },
+    },
   },
   {
     id: 12,
@@ -142,6 +227,13 @@ export const projects: Project[] = [
     tech: ["Node.js", "TypeScript", "PostgreSQL", "AWS"],
     status: "offline",
     image: "/images/shiptonaija.png",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description:
+          "Outil de logistique d'expédition pour la livraison des États-Unis/Chine/Royaume-Uni vers le Nigeria. Architecturé et construit tout le backend.",
+      },
+    },
   },
   {
     id: 13,
@@ -153,6 +245,12 @@ export const projects: Project[] = [
     tech: ["Node.js", "TypeScript", "PostgreSQL"],
     status: "offline",
     image: "/placeholder.svg?height=300&width=400",
+    translations: {
+      fr: {
+        role: "Développeur Backend",
+        description: "Application d'expédition pour l'exportation depuis le Nigeria. Construit les API backend.",
+      },
+    },
   },
   {
     id: 14,
@@ -165,8 +263,15 @@ export const projects: Project[] = [
     tech: ["Next.js", "NestJS", "Python"],
     status: "live",
     image: "/images/densops.png",
+    translations: {
+      fr: {
+        role: "Développeur Fullstack",
+        description:
+          "Plateforme de génération de leads d'entreprises locales et de prospection B2B alimentée par l'IA. Trouve, enrichit et exporte des listes d'entreprises en quelques secondes — y compris les identifiants sociaux, les informations de contact et les données commerciales vérifiées. Construit le frontend en Next.js, les API en NestJS et le service IA/enrichissement en Python.",
+      },
+    },
   },
-]
+];
 
 export const skillCategories: SkillCategory[] = [
   {
