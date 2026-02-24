@@ -25,6 +25,12 @@ export default function Portfolio() {
 
   const t = translations[language]
 
+  // Reset filter when language changes
+  useEffect(() => {
+    setActiveFilter(t.categories.all)
+    setFilteredProjects(projects)
+  }, [language, t.categories.all])
+
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -297,7 +303,7 @@ export default function Portfolio() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" key={`projects-${language}`}>
             {filteredProjects.map((project, index) => {
               const translatedProject = getProjectTranslation(project, language)
               const categoryKey = getCategoryKey(project.category)
@@ -305,7 +311,7 @@ export default function Portfolio() {
               
               return (
                 <Card
-                  key={project.id}
+                  key={`${project.id}-${language}`}
                   className={`group bg-card/50 backdrop-blur-sm border-border/50 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 cursor-pointer hover:-translate-y-2 animate-fade-in-up overflow-hidden`}
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setSelectedProject(translatedProject)}
