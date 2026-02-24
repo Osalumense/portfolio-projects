@@ -1,220 +1,31 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronDown, ExternalLink, Github, Linkedin, Mail, FileText } from "lucide-react"
+import { ChevronDown, ChevronUp, ExternalLink, Github, Linkedin, Mail, Moon, Sun, Languages } from "lucide-react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-
-// Project data
-const projects = [
-  {
-    id: 1,
-    title: "BestdealNaija",
-    url: "https://bestdealnaija.com",
-    category: "E-commerce",
-    role: "Fullstack Developer",
-    description:
-      "Multi-vendor e-commerce platform. Built admin dashboard, user landing, and core modules like product, vendor, category management.",
-    tech: ["React", "Flask", "Docker"],
-    status: "live",
-    image: "/images/bestdeal.png",
-  },
-  {
-    id: 2,
-    title: "AFJ Farms",
-    url: "https://afjfarms.com",
-    category: "AgriTech",
-    role: "Fullstack Developer",
-    description: "Agro-commerce platform. Designed dashboard, core logic, and integrated Flutterwave payments.",
-    tech: ["Laravel", "Tailwind", "PHP"],
-    status: "live",
-    image: "/images/afjafarms.png",
-  },
-  {
-    id: 3,
-    title: "GUO Transport",
-    url: "https://guotransport.com",
-    category: "Logistics",
-    role: "Backend Developer",
-    description: "Contributed to core architecture of Nigeria's top transport logistics website.",
-    tech: ["Laravel", "TypeScript"],
-    status: "live",
-    image: "/images/guo.png",
-  },
-  {
-    id: 4,
-    title: "Comdoity",
-    url: "https://comdoity.com",
-    category: "Social Platform",
-    role: "Fullstack Developer",
-    description:
-      "Social platform for NGOs. Revamped homepage, redesigned admin dashboard, and integrated Stripe for donations.",
-    tech: ["React", "Laravel"],
-    status: "live",
-    image: "/images/comdoity.png",
-  },
-  {
-    id: 5,
-    title: "FarmPropa",
-    url: "#",
-    category: "AgriTech",
-    role: "Backend Developer",
-    description:
-      "Smart advisory platform for farmers in Nigeria. Built full backend, user flows, and an intelligent recommendation engine. Now with 1,000+ downloads on Google Play Store and featured in BusinessDay.",
-    tech: ["Node.js", "TypeScript", "Sequelize", "AWS"],
-    status: "mobile",
-    image: "/images/farmpropa.png",
-    links: [
-      { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.farmpropa.saro&hl=en" },
-      { label: "BusinessDay Feature", url: "https://businessday.ng/agriculture/article/saro-agrosciences-unveils-farmpropa-to-support-farmers-with-agronomic-guidance/" },
-    ],
-  },
-  {
-    id: 6,
-    title: "MLD",
-    url: "https://mld.ng",
-    category: "Corporate",
-    role: "Frontend Developer",
-    description: "Built a clean landing page tailored to brand guidelines.",
-    tech: ["React", "Tailwind"],
-    status: "live",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 7,
-    title: "Simacombet",
-    url: "https://simacombet.shop",
-    category: "Gaming",
-    role: "Fullstack Developer",
-    description: "Betting platform. Redesigned homepage, implemented registration system, and integrated payments.",
-    tech: ["PHP", "Bootstrap", "Redis", "Docker"],
-    status: "live",
-    image: "/images/sima.png",
-  },
-  {
-    id: 8,
-    title: "Earlybean",
-    url: "#",
-    category: "EdTech",
-    role: "Backend Developer",
-    description:
-      "Financial literacy app for kids. Built a complete course management backend, parental monitoring features, and enrollment logic.",
-    tech: ["Laravel", "PostgreSQL", "Heroku"],
-    status: "mobile",
-    image: "/images/earlybean.png",
-  },
-  {
-    id: 9,
-    title: "MyJobPadi",
-    url: "https://myjobpadi.com",
-    category: "AI Platform",
-    role: "Fullstack Developer",
-    description: "AI-powered job matching platform. Built a waitlist page and am working on the full MVP.",
-    tech: ["Next.js", "NestJS", "PostgreSQL"],
-    status: "live",
-    image: "/images/jobpadi.png",
-  },
-  {
-    id: 10,
-    title: "Etuition App",
-    url: "#",
-    category: "EdTech",
-    role: "Backend Developer",
-    description: "Learning platform for Nigerian secondary school students. Built and deployed backend v1 & v2.",
-    tech: ["Node.js", "MySQL", "Redis", "AWS"],
-    status: "offline",
-    image: "/images/etuition.png",
-  },
-  {
-    id: 11,
-    title: "Zonely",
-    url: "http://tryzonely.com",
-    category: "Productivity / SaaS",
-    role: "Backend Developer",
-    description:
-      "Team productivity tool for scheduling across time zones. Developed all backend APIs with Google Calendar integration.",
-    tech: ["Node.js", "MySQL", "AWS"],
-    status: "offline",
-    image: "/images/zonely.png",
-  },
-  {
-    id: 12,
-    title: "Shiptonaija",
-    url: "#",
-    category: "Logistics",
-    role: "Backend Developer",
-    description:
-      "Shipping logistics tool for delivering from US/China/UK to Nigeria. Architected and built entire backend.",
-    tech: ["Node.js", "TypeScript", "PostgreSQL", "AWS"],
-    status: "offline",
-    image: "/images/shiptonaija.png",
-  },
-  {
-    id: 13,
-    title: "Export to Wealth",
-    url: "#",
-    category: "Logistics",
-    role: "Backend Developer",
-    description: "Shipping app for exporting from Nigeria. Built backend APIs.",
-    tech: ["Node.js", "TypeScript", "PostgreSQL"],
-    status: "offline",
-    image: "/placeholder.svg?height=300&width=400",
-  },
-  {
-    id: 14,
-    title: "DensOps",
-    url: "https://densops.com",
-    category: "SaaS",
-    role: "Fullstack Developer",
-    description:
-      "AI-powered local business lead generation and B2B prospecting platform. Finds, enriches, and exports business lists in seconds — including social handles, contact info, and verified business data. Built the frontend in Next.js, APIs in NestJS, and the AI/enrichment service in Python.",
-    tech: ["Next.js", "NestJS", "Python"],
-    status: "live",
-    image: "/images/densops.png",
-  },
-]
-
-const skills = [
-  "Node.js",
-  "Laravel",
-  "PostgreSQL",
-  "Redis",
-  "Docker",
-  "AWS",
-  "CI/CD",
-  "TypeScript",
-  "MySQL",
-  "MongoDB",
-  "React",
-  "Next.js",
-  "NestJS",
-  "PHP",
-  "Python",
-  "Kubernetes",
-  "Microservices",
-]
-
-const categories = [
-  "All",
-  "E-commerce",
-  "AgriTech",
-  "Logistics",
-  "EdTech",
-  "Social Platform",
-  "AI Platform",
-  "Gaming",
-  "Corporate",
-  "Productivity",
-  "SaaS",
-]
+import { projects, skillCategories, categories } from "@/lib/data"
+import { translations } from "@/lib/translations"
+import { Project, Language } from "@/lib/types"
 
 export default function Portfolio() {
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [filteredProjects, setFilteredProjects] = useState(projects)
   const [activeFilter, setActiveFilter] = useState("All")
-  const [isVisible, setIsVisible] = useState({})
+  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({})
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  const [language, setLanguage] = useState<Language>("en")
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  const t = translations[language]
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -234,17 +45,30 @@ export default function Portfolio() {
     return () => observer.disconnect()
   }, [])
 
-  const filterProjects = (category) => {
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const filterProjects = (category: string) => {
     setActiveFilter(category)
-    if (category === "All") {
+    if (category === "All" || category === "Tous") {
       setFilteredProjects(projects)
     } else {
       setFilteredProjects(projects.filter((project) => project.category.includes(category)))
     }
   }
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   const handleEmailClick = () => {
@@ -252,35 +76,77 @@ export default function Portfolio() {
       "mailto:akugbestephen3@gmail.com?subject=Let's discuss a project&body=Hi Akugbe,%0D%0A%0D%0AI'd like to discuss a potential project with you.%0D%0A%0D%0ABest regards,"
   }
 
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "fr" : "en")
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
-      {/* Floating Background Elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl animate-bounce"></div>
+    <div className="min-h-screen bg-background transition-colors duration-300">
+      {/* Fixed Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+            SA
+          </div>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-sm font-medium hover:text-blue-600 transition-colors"
+            >
+              {t.nav.about}
+            </button>
+            <button
+              onClick={() => scrollToSection("projects")}
+              className="text-sm font-medium hover:text-blue-600 transition-colors"
+            >
+              {t.nav.projects}
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-sm font-medium hover:text-blue-600 transition-colors"
+            >
+              {t.nav.contact}
+            </button>
+            <button
+              onClick={toggleLanguage}
+              className="p-2 rounded-lg hover:bg-accent transition-colors"
+              title={language === "en" ? "Français" : "English"}
+            >
+              <Languages className="h-5 w-5" />
+            </button>
+            {mounted && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2 rounded-lg hover:bg-accent transition-colors"
+              >
+                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      {/* Subtle Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-30 dark:opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="text-center z-10 max-w-4xl mx-auto">
           <div className="animate-fade-in-up">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-              Stephen Akugbe
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
+              {t.hero.title}
             </h1>
-            <h2 className="text-2xl md:text-3xl text-gray-300 mb-6 font-light">
-              Backend Developer / Fullstack Engineer
-            </h2>
+            <h2 className="text-2xl md:text-3xl text-muted-foreground mb-6 font-light">{t.hero.subtitle}</h2>
           </div>
 
           <div className="animate-fade-in-up delay-300 mb-8">
-            <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4 max-w-3xl mx-auto">
-              I build robust backend systems and high-performance APIs powering apps used by thousands, from e-commerce
-              platforms to financial literacy tools, logistics, and agritech solutions.
+            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-4 max-w-3xl mx-auto">
+              {t.hero.description1}
             </p>
-            <p className="text-gray-400 text-sm md:text-base">
-              Specializing in Laravel, Node.js, TypeScript, AWS, PostgreSQL, and scalable architectures.
-            </p>
+            <p className="text-muted-foreground text-sm md:text-base">{t.hero.description2}</p>
           </div>
 
           <div className="animate-fade-in-up delay-500">
@@ -288,59 +154,70 @@ export default function Portfolio() {
               onClick={() => scrollToSection("about")}
               className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105"
             >
-              Learn More About Me
-              <ChevronDown className="ml-2 h-5 w-5 animate-bounce" />
+              {t.hero.learnMore}
+              <ChevronDown className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="h-8 w-8 text-gray-400" />
+          <ChevronDown className="h-8 w-8 text-muted-foreground" />
         </div>
       </section>
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto">
           <div
             id="about-title"
             data-animate
-            className={`mb-12 transition-all duration-1000 ${
+            className={`mb-12 text-center transition-all duration-1000 ${
               isVisible["about-title"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">About Me</h2>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              I'm a software developer who turns product ideas into scalable platforms. Whether designing core
-              architectures, building APIs, integrating payment systems, or setting up cloud infrastructure, I make
-              digital systems reliable, secure, and ready to scale.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">{t.about.title}</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">{t.about.description}</p>
           </div>
 
-          {/* Skills Cloud */}
+          {/* Skills by Category */}
           <div
-            id="skills-cloud"
+            id="skills-categories"
             data-animate
             className={`transition-all duration-1000 delay-300 ${
-              isVisible["skills-cloud"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              isVisible["skills-categories"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h3 className="text-2xl font-bold text-white mb-8">Technical Skills</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {skills.map((skill, index) => (
-                <Badge
-                  key={skill}
-                  className={`bg-gradient-to-r from-blue-600/20 to-teal-600/20 text-white border-blue-400/30 px-4 py-2 text-sm font-medium hover:scale-110 transition-transform duration-300 animate-fade-in`}
-                  style={{ animationDelay: `${index * 50}ms` }}
+            <h3 className="text-2xl font-bold text-center mb-8">{t.about.skillsTitle}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {skillCategories.map((category, index) => (
+                <Card
+                  key={category.name}
+                  className="bg-card hover:shadow-lg transition-all duration-300 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {skill}
-                </Badge>
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold text-lg mb-4 text-blue-600 dark:text-blue-400">
+                      {t.skillCategories[category.name as keyof typeof t.skillCategories]}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill) => (
+                        <Badge key={skill} variant="secondary" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      </div>
 
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 relative z-10">
@@ -352,26 +229,29 @@ export default function Portfolio() {
               isVisible["projects-title"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Featured Projects</h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              A collection of applications I've built, from e-commerce platforms to fintech solutions
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.projects.title}</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{t.projects.description}</p>
           </div>
 
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                onClick={() => filterProjects(category)}
-                variant={activeFilter === category ? "default" : "outline"}
-                className={`rounded-full transition-all duration-300 ${
-                  activeFilter === category ? "bg-blue-600 text-white" : "bg-white/10 text-gray-300 hover:bg-white/20"
-                }`}
-              >
-                {category}
-              </Button>
-            ))}
+            {categories.map((category) => {
+              const projectCount = category === "All" ? projects.length : projects.filter((p) => p.category === category).length
+              return (
+                <Button
+                  key={category}
+                  onClick={() => filterProjects(category)}
+                  variant={activeFilter === category ? "default" : "outline"}
+                  className={`rounded-full transition-all duration-300 ${
+                    activeFilter === category
+                      ? "bg-blue-600 text-white hover:bg-blue-700"
+                      : "hover:bg-accent"
+                  }`}
+                >
+                  {category} ({projectCount})
+                </Button>
+              )
+            })}
           </div>
 
           {/* Projects Grid */}
@@ -379,12 +259,12 @@ export default function Portfolio() {
             {filteredProjects.map((project, index) => (
               <Card
                 key={project.id}
-                className={`group bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/20 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:shadow-2xl animate-fade-in-up`}
+                className={`group bg-card hover:shadow-xl transition-all duration-500 cursor-pointer transform hover:scale-105 animate-fade-in-up`}
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => setSelectedProject(project)}
               >
-                <CardContent className="p-6">
-                  <div className="relative mb-4 overflow-hidden rounded-lg">
+                <CardContent className="p-0">
+                  <div className="relative overflow-hidden rounded-t-lg">
                     <img
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
@@ -395,41 +275,43 @@ export default function Portfolio() {
                         variant={project.status === "live" ? "default" : "secondary"}
                         className={`${
                           project.status === "live"
-                            ? "bg-green-500 text-white"
+                            ? "bg-green-500 text-white hover:bg-green-600"
                             : project.status === "mobile"
-                              ? "bg-blue-500 text-white"
-                              : "bg-gray-500 text-white"
+                              ? "bg-blue-500 text-white hover:bg-blue-600"
+                              : "bg-gray-500 text-white hover:bg-gray-600"
                         }`}
                       >
-                        {project.status === "live" ? "Live" : project.status === "mobile" ? "Mobile App" : "Offline"}
+                        {t.common[project.status]}
                       </Badge>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                    {project.title}
-                  </h3>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors">
+                      {project.title}
+                    </h3>
 
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 3).map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-xs border-blue-400 text-blue-300">
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.tech.length > 3 && (
-                      <Badge variant="outline" className="text-xs border-gray-400 text-gray-300">
-                        +{project.tech.length - 3}
-                      </Badge>
-                    )}
-                  </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.slice(0, 3).map((tech) => (
+                        <Badge key={tech} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                      {project.tech.length > 3 && (
+                        <Badge variant="outline" className="text-xs">
+                          +{project.tech.length - 3}
+                        </Badge>
+                      )}
+                    </div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-400">{project.category}</span>
-                    {project.url !== "#" && (
-                      <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-blue-300 transition-colors" />
-                    )}
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-muted-foreground">{project.category}</span>
+                      {project.url !== "#" && (
+                        <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-blue-600 transition-colors" />
+                      )}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -437,6 +319,11 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+      </div>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 relative z-10">
@@ -448,18 +335,15 @@ export default function Portfolio() {
               isVisible["contact-title"] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Let's Build Something</h2>
-            <p className="text-gray-400 text-lg mb-8">
-              Ready to turn your ideas into reality? Let's discuss your next project.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">{t.contact.title}</h2>
+            <p className="text-muted-foreground text-lg mb-8">{t.contact.description}</p>
 
-            {/* Email CTA */}
             <Button
               onClick={handleEmailClick}
               className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 mb-8"
             >
               <Mail className="mr-2 h-5 w-5" />
-              Send Me an Email
+              {t.contact.sendEmail}
             </Button>
           </div>
 
@@ -469,61 +353,60 @@ export default function Portfolio() {
               href="https://linkedin.com/in/akugbe-stephen"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-4 bg-white/10 backdrop-blur-lg rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
-              title="Connect on LinkedIn"
+              className="group p-4 bg-accent rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-110"
+              title={t.contact.linkedinDesc}
             >
-              <Linkedin className="h-6 w-6 text-white group-hover:text-blue-400 transition-colors" />
+              <Linkedin className="h-6 w-6" />
             </a>
             <a
               href="https://github.com/Osalumense"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-4 bg-white/10 backdrop-blur-lg rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
-              title="View GitHub Profile"
+              className="group p-4 bg-accent rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:scale-110"
+              title={t.contact.githubDesc}
             >
-              <Github className="h-6 w-6 text-white group-hover:text-gray-300 transition-colors" />
+              <Github className="h-6 w-6" />
             </a>
             <a
               href="https://dev.to/Osalumense"
               target="_blank"
               rel="noopener noreferrer"
-              className="group p-4 bg-white/10 backdrop-blur-lg rounded-full hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
-              title="Read my technical articles on Dev.to"
+              className="group p-4 bg-accent rounded-full hover:bg-green-600 hover:text-white transition-all duration-300 transform hover:scale-110"
+              title={t.contact.devtoDesc}
             >
-              <FileText className="h-6 w-6 text-white group-hover:text-green-400 transition-colors" />
+              <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-.72.04-.75.03v1.77l1.22.03 1.2.04v1.28h-1.6c-1.53 0-1.6-.01-1.87-.3l-.3-.28v-3.16c0-3.02.01-3.18.25-3.48.23-.31.25-.31 1.88-.31h1.64v1.3zm4.68 5.45c-.17.43-.64.79-1 .79-.18 0-.45-.15-.67-.39-.32-.32-.45-.63-.82-2.08l-.9-3.39-.45-1.67h.76c.4 0 .75.02.75.05 0 .06 1.16 4.54 1.26 4.83.04.15.32-.7.73-2.3l.66-2.52.74-.04c.4-.02.73 0 .73.04 0 .14-1.67 6.38-1.8 6.68z"/>
+              </svg>
             </a>
-          </div>
-
-          {/* Social Links Description */}
-          <div className="text-center mt-8 space-y-2">
-            <p className="text-gray-400 text-sm">
-              <span className="font-medium text-white">LinkedIn:</span> Professional networking and career updates
-            </p>
-            <p className="text-gray-400 text-sm">
-              <span className="font-medium text-white">GitHub:</span> Open source contributions and code repositories
-            </p>
-            <p className="text-gray-400 text-sm">
-              <span className="font-medium text-white">Dev.to:</span> Technical articles and insights I publish from
-              time to time
-            </p>
           </div>
         </div>
       </section>
 
+      {/* Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-110"
+          aria-label="Back to top"
+        >
+          <ChevronUp className="h-6 w-6" />
+        </button>
+      )}
+
       {/* Project Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           {selectedProject && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold text-white flex items-center gap-3">
+                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
                   {selectedProject.title}
                   {selectedProject.url !== "#" && (
                     <a
                       href={selectedProject.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300"
+                      className="text-blue-600 hover:text-blue-500"
                     >
                       <ExternalLink className="h-5 w-5" />
                     </a>
@@ -540,26 +423,26 @@ export default function Portfolio() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">My Role</h3>
-                    <p className="text-gray-300">{selectedProject.role}</p>
+                    <h3 className="text-lg font-semibold mb-2">{t.projects.role}</h3>
+                    <p className="text-muted-foreground">{selectedProject.role}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Category</h3>
-                    <Badge className="bg-blue-600 text-white">{selectedProject.category}</Badge>
+                    <h3 className="text-lg font-semibold mb-2">{t.projects.category}</h3>
+                    <Badge className="bg-blue-600 text-white hover:bg-blue-700">{selectedProject.category}</Badge>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-2">What I Built</h3>
-                  <p className="text-gray-300 leading-relaxed">{selectedProject.description}</p>
+                  <h3 className="text-lg font-semibold mb-2">{t.projects.whatIBuilt}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{selectedProject.description}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-3">Tech Stack</h3>
+                  <h3 className="text-lg font-semibold mb-3">{t.projects.techStack}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech) => (
-                      <Badge key={tech} variant="outline" className="border-blue-400 text-blue-300">
+                      <Badge key={tech} variant="outline">
                         {tech}
                       </Badge>
                     ))}
@@ -568,7 +451,7 @@ export default function Portfolio() {
 
                 {selectedProject.links && selectedProject.links.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-3">Links</h3>
+                    <h3 className="text-lg font-semibold mb-3">{t.projects.links}</h3>
                     <div className="flex flex-wrap gap-3">
                       {selectedProject.links.map((link) => (
                         <a
@@ -576,7 +459,7 @@ export default function Portfolio() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-400/30 rounded-lg text-blue-300 text-sm transition-colors"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600/10 hover:bg-blue-600/20 border border-blue-600/30 rounded-lg text-blue-600 dark:text-blue-400 text-sm transition-colors"
                         >
                           <ExternalLink className="h-4 w-4" />
                           {link.label}
@@ -590,6 +473,13 @@ export default function Portfolio() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-border">
+        <div className="max-w-7xl mx-auto text-center text-muted-foreground text-sm">
+          <p>© {new Date().getFullYear()} Stephen Akugbe. {language === "en" ? "All rights reserved." : "Tous droits réservés."}</p>
+        </div>
+      </footer>
     </div>
   )
 }
