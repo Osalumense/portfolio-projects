@@ -42,7 +42,7 @@ export function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitche
         className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-accent transition-colors border border-border/40"
         aria-label="Select language"
       >
-        <span className="text-xl">{currentLang.flag}</span>
+        <span className="inline-flex h-5 min-w-7 items-center justify-center rounded bg-blue-600 px-1 text-[10px] font-bold leading-none text-white">{currentLang.code === "en" ? "GB" : "FR"}</span>
         <span className="font-medium text-sm">{currentLang.label}</span>
         <svg
           className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -64,11 +64,8 @@ export function LanguageSwitcher({ language, onLanguageChange }: LanguageSwitche
                 language === lang.code ? "bg-accent/50" : ""
               }`}
             >
-              <span className="text-xl">{lang.flag}</span>
-              <div className="flex flex-col items-start">
-                <span className="font-medium text-sm">{lang.label}</span>
-                <span className="text-xs text-muted-foreground">{lang.name}</span>
-              </div>
+              <span className="inline-flex h-5 min-w-7 shrink-0 items-center justify-center rounded bg-blue-600 px-1 text-[10px] font-bold leading-none text-white">{lang.code === "en" ? "GB" : "FR"}</span>
+              <span className="min-w-0 flex-1 truncate text-left text-sm font-medium">{lang.name}</span>
               {language === lang.code && (
                 <svg className="w-4 h-4 ml-auto text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                   <path

@@ -2,6 +2,35 @@ import { Project, SkillCategory } from "./types"
 
 export const projects: Project[] = [
   {
+    id: 15,
+    title: "FernPair",
+    url: "https://fernpair.com",
+    category: "EdTech",
+    role: "Founder & Fullstack Engineer",
+    description: "A mentorship platform where mentors use AI to generate structured learning roadmaps and project briefs, then review and refine milestones, resources, requirements, and assignments before learners begin. It also gives learners guided projects, progress evidence, feedback, and direct support from mentors.",
+    tech: ["React", "NestJS", "PostgreSQL", "AI-assisted planning", "Netlify", "Render"],
+    status: "live",
+    image: "/images/fernpair.svg",
+    links: [
+      { label: "Open FernPair app", url: "https://app.fernpair.com" },
+      { label: "View source", url: "https://github.com/Osalumense/devforge" },
+    ],
+    translations: { fr: { role: "Fondateur et ingénieur fullstack", description: "Une plateforme de mentorat où les mentors utilisent l’IA pour générer des feuilles de route et des briefs de projet structurés, puis révisent et affinent les jalons, ressources, exigences et attributions avant que les apprenants ne commencent. Elle offre aussi des projets guidés, des preuves de progression, des retours et un soutien direct des mentors.", links: [{ label: "Ouvrir l’application FernPair", url: "https://app.fernpair.com" }, { label: "Voir le code source", url: "https://github.com/Osalumense/devforge" }] } },
+  },
+  {
+    id: 16,
+    title: "JobRadar AI",
+    url: "https://github.com/Osalumense/jobradar",
+    category: "AI Platform",
+    role: "Fullstack Engineer",
+    description: "A self-hosted AI job-search platform that scrapes multiple job boards, scores roles using semantic and keyword matching, generates tailored application material, and tracks applications in a Kanban pipeline.",
+    tech: ["Nuxt", "FastAPI", "Python", "PostgreSQL", "Redis", "Gemini"],
+    status: "live",
+    image: "/images/jobradar.svg",
+    links: [{ label: "View source", url: "https://github.com/Osalumense/jobradar" }],
+    translations: { fr: { role: "Ingénieur fullstack", description: "Une plateforme de recherche d’emploi auto-hébergée qui collecte des offres, les classe grâce à la correspondance sémantique et par mots-clés, génère des candidatures adaptées et suit les candidatures dans un pipeline Kanban.", links: [{ label: "Voir le code source", url: "https://github.com/Osalumense/jobradar" }] } },
+  },
+  {
     id: 1,
     title: "BestdealNaija",
     url: "https://bestdealnaija.com",
@@ -275,20 +304,24 @@ export const projects: Project[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: "backend",
-    skills: ["Node.js", "Laravel", "NestJS", "PHP", "Python"],
+    name: "product",
+    skills: ["React", "Next.js", "Nuxt", "TypeScript", "Tailwind CSS", "UX Workflows"],
   },
   {
-    name: "frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind"],
+    name: "systems",
+    skills: ["Node.js", "NestJS", "Python", "FastAPI", "Laravel", "REST APIs"],
   },
   {
-    name: "databases",
-    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+    name: "dataai",
+    skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Embeddings", "Semantic Search"],
   },
   {
-    name: "devops",
-    skills: ["Docker", "AWS", "CI/CD", "Kubernetes", "Microservices"],
+    name: "llms",
+    skills: ["Gemini", "Claude", "OpenAI APIs", "ChatGPT", "Grok", "Tool Calling", "Structured Outputs"],
+  },
+  {
+    name: "reliability",
+    skills: ["Docker", "Kubernetes", "AWS", "CI/CD", "Prometheus", "Grafana", "Observability"],
   },
 ]
 

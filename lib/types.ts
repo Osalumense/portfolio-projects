@@ -67,10 +67,11 @@ export interface Translations {
     offline: string
   }
   skillCategories: {
-    backend: string
-    frontend: string
-    databases: string
-    devops: string
+    product: string
+    systems: string
+    dataai: string
+    llms: string
+    reliability: string
   }
   categories: {
     all: string

@@ -3,13 +3,13 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {
-  title: 'Stephen Akugbe - Backend Developer & Fullstack Engineer',
-  description: 'Portfolio of Stephen Akugbe - Building robust backend systems and high-performance APIs for e-commerce, fintech, logistics, and agritech solutions. Specializing in Laravel, Node.js, TypeScript, AWS, and PostgreSQL.',
-  keywords: ['Backend Developer', 'Fullstack Engineer', 'Laravel', 'Node.js', 'TypeScript', 'AWS', 'PostgreSQL', 'API Development'],
+  title: 'Stephen Akugbe - Product Engineer',
+  description: 'Portfolio of Stephen Akugbe, a product engineer who designs and ships useful software across product, systems, AI, data, and reliable delivery.',
+  keywords: ['Product Engineer', 'Systems Engineer', 'AI Engineer', 'LLM APIs', 'Node.js', 'TypeScript', 'Kubernetes', 'Prometheus', 'Grafana'],
   authors: [{ name: 'Stephen Akugbe' }],
   openGraph: {
-    title: 'Stephen Akugbe - Backend Developer & Fullstack Engineer',
-    description: 'Portfolio of Stephen Akugbe - Building robust backend systems and high-performance APIs',
+    title: 'Stephen Akugbe - Product Engineer',
+    description: 'Product engineering across useful software, systems, AI, data, and reliable delivery.',
     type: 'website',
   },
 }

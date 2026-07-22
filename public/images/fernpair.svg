@@ -1,0 +1,15 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="36" fill="#F5F3EA"/>
+  <circle cx="1080" cy="70" r="210" fill="#D6F26B" fill-opacity=".75"/>
+  <circle cx="120" cy="670" r="245" fill="#DCEBD8"/>
+  <rect x="116" y="104" width="968" height="512" rx="26" fill="white" stroke="#DCE4D8" stroke-width="4"/>
+  <rect x="116" y="104" width="210" height="512" rx="26" fill="#123D31"/>
+  <rect x="150" y="148" width="56" height="56" rx="17" fill="#D6F26B"/><text x="165" y="184" fill="#123D31" font-family="Arial, sans-serif" font-size="21" font-weight="800">FP</text>
+  <text x="150" y="243" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="700">FernPair</text>
+  <rect x="150" y="282" width="126" height="15" rx="7" fill="#DCE4D8" fill-opacity=".7"/><rect x="150" y="326" width="105" height="15" rx="7" fill="#DCE4D8" fill-opacity=".35"/><rect x="150" y="370" width="120" height="15" rx="7" fill="#DCE4D8" fill-opacity=".35"/>
+  <text x="374" y="170" fill="#173E32" font-family="Arial, sans-serif" font-size="34" font-weight="700">Good evening, Stephen</text>
+  <text x="374" y="204" fill="#718078" font-family="Arial, sans-serif" font-size="17">A calm place to guide meaningful learning.</text>
+  <rect x="374" y="246" width="650" height="140" rx="18" fill="#EEF3EA"/><text x="406" y="287" fill="#173E32" font-family="Arial, sans-serif" font-size="19" font-weight="700">Active learner roadmap</text><rect x="406" y="318" width="518" height="12" rx="6" fill="#DCE4D8"/><rect x="406" y="318" width="303" height="12" rx="6" fill="#78A958"/><text x="940" y="331" fill="#173E32" font-family="Arial, sans-serif" font-size="15" font-weight="700">58%</text>
+  <rect x="374" y="420" width="307" height="150" rx="18" fill="#123D31"/><text x="406" y="462" fill="#D6F26B" font-family="Arial, sans-serif" font-size="15" font-weight="700">MENTORSHIP</text><text x="406" y="505" fill="white" font-family="Arial, sans-serif" font-size="26" font-weight="700">Roadmaps with purpose</text>
+  <rect x="715" y="420" width="309" height="150" rx="18" fill="#FFF" stroke="#DCE4D8" stroke-width="3"/><text x="747" y="463" fill="#718078" font-family="Arial, sans-serif" font-size="15" font-weight="700">LEARNING MOMENTUM</text><text x="747" y="511" fill="#173E32" font-family="Arial, sans-serif" font-size="34" font-weight="700">12 tasks</text><text x="747" y="540" fill="#718078" font-family="Arial, sans-serif" font-size="16">completed this week</text>
+</svg>

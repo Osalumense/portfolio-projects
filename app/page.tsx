@@ -13,9 +13,16 @@ import { translations } from "@/lib/translations"
 import { Project, Language } from "@/lib/types"
 import { getProjectTranslation, getCategoryKey } from "@/lib/helpers"
 
+const featuredProjectOrder = ["FernPair", "JobRadar AI", "DensOps"]
+const orderProjects = (items: Project[]) => [...items].sort((left, right) => {
+  const leftIndex = featuredProjectOrder.indexOf(left.title)
+  const rightIndex = featuredProjectOrder.indexOf(right.title)
+  return (leftIndex === -1 ? Number.MAX_SAFE_INTEGER : leftIndex) - (rightIndex === -1 ? Number.MAX_SAFE_INTEGER : rightIndex)
+})
+
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [filteredProjects, setFilteredProjects] = useState(projects)
+  const [filteredProjects, setFilteredProjects] = useState(() => orderProjects(projects))
   const [activeFilter, setActiveFilter] = useState("All")
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({})
   const [showScrollTop, setShowScrollTop] = useState(false)
@@ -28,7 +35,7 @@ export default function Portfolio() {
   // Reset filter when language changes
   useEffect(() => {
     setActiveFilter(t.categories.all)
-    setFilteredProjects(projects)
+    setFilteredProjects(orderProjects(projects))
   }, [language, t.categories.all])
 
   useEffect(() => {
@@ -65,12 +72,12 @@ export default function Portfolio() {
   const filterProjects = (category: string) => {
     setActiveFilter(category)
     if (category === "All" || category === "Tous") {
-      setFilteredProjects(projects)
+      setFilteredProjects(orderProjects(projects))
     } else {
       // Find the English category name to filter by
       const categoryKey = getCategoryKey(category)
       const englishCategory = categories.find((cat) => getCategoryKey(cat) === categoryKey) || category
-      setFilteredProjects(projects.filter((project) => project.category === englishCategory))
+      setFilteredProjects(orderProjects(projects.filter((project) => project.category === englishCategory)))
     }
   }
 
@@ -224,7 +231,7 @@ export default function Portfolio() {
             }`}
           >
             <h3 className="text-2xl md:text-3xl font-semibold text-center mb-12">{t.about.skillsTitle}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {skillCategories.map((category, index) => (
                 <Card
                   key={category.name}
@@ -361,10 +368,20 @@ export default function Portfolio() {
                         )}
                       </div>
 
-                      <div className="flex items-center justify-between pt-2">
+                      <div className="flex items-center justify-between gap-3 pt-2">
                         <span className="text-sm text-muted-foreground font-medium">{translatedCategory}</span>
                         {project.url !== "#" && (
-                          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-blue-600 transition-colors" />
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(event) => event.stopPropagation()}
+                            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                            aria-label={`${language === "fr" ? "Voir le projet" : "View project"}: ${project.title}`}
+                          >
+                            {language === "fr" ? "Voir le projet" : "View project"}
+                            <ExternalLink className="h-3.5 w-3.5" />
+                          </a>
                         )}
                       </div>
                     </div>
@@ -463,18 +480,8 @@ export default function Portfolio() {
           {selectedProject && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-2xl font-bold flex items-center gap-3">
+                <DialogTitle className="text-2xl font-bold">
                   {selectedProject.title}
-                  {selectedProject.url !== "#" && (
-                    <a
-                      href={selectedProject.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-500 transition-colors"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  )}
                 </DialogTitle>
               </DialogHeader>
 
@@ -486,6 +493,18 @@ export default function Portfolio() {
                     className="w-full h-72 object-cover"
                   />
                 </div>
+
+                {selectedProject.url !== "#" && (
+                  <a
+                    href={selectedProject.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 sm:w-auto"
+                  >
+                    {language === "fr" ? "Voir le projet" : "View project"}
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
